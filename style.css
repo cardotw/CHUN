@@ -1,9 +1,24 @@
+/* -------- 基本設定 -------- */
 body {
   margin: 0;
-  font-family: "微軟正黑體", sans-serif;
-  background-color: #fffdf9;
+  padding: 0;
+  font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
+  background-color: #fafafa;
+  color: #333;
 }
 
+/* -------- Banner 樣式 -------- */
+.banner {
+  background-color: #f8f5f2; /* 推薦色：淡米白，溫柔品牌感 */
+  text-align: center;
+  padding: 32px 0;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #333;
+}
+
+/* -------- Hero 區塊 -------- */
 .hero {
   position: relative;
   width: 100%;
@@ -37,6 +52,7 @@ body {
   font-size: 18px;
 }
 
+/* -------- Tabs -------- */
 .tabs {
   display: flex;
   justify-content: center;
@@ -61,6 +77,7 @@ body {
   font-weight: bold;
 }
 
+/* -------- 商品列表 -------- */
 .product-list {
   display: flex;
   flex-wrap: wrap;
@@ -85,6 +102,9 @@ body {
 
 .product-card img {
   width: 100%;
+  height: 320px;
+  object-fit: cover;
+  object-position: center;
   display: block;
 }
 
@@ -101,59 +121,7 @@ body {
   font-weight: bold;
 }
 
-.product-card img {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-
-}
-
-.page-header {
-  background-color: #f8f6f1;
-  padding: 40px 20px 30px;
-  text-align: center;
-  color: #333;
-}
-
-.page-header h1 {
-  font-size: 26px;
-  margin: 0 0 10px;
-}
-
-.page-header p {
-  font-size: 14px;
-  color: #888;
-  margin: 0;
-}
-
-.page-header {
-  background-color: #333; /* 深灰背景 */
-  padding: 50px 20px 40px;
-  text-align: center;
-}
-
-.page-header h1 {
-  color: white;
-  font-size: 28px;
-  margin: 0 0 10px;
-}
-
-.page-header p {
-  color: #f0f0f0;
-  font-size: 14px;
-  margin: 0;
-}
-
-body {
-  font-family: 'Noto Sans TC', 'Helvetica Neue', sans-serif;
-  background-color: #fafafa;
-  color: #333;
-  margin: 0;
-  padding: 0;
-}
-
+/* -------- 詳情頁 -------- */
 .product-detail {
   max-width: 700px;
   margin: 40px auto;
@@ -198,13 +166,4 @@ body {
   font-size: 18px;
   font-weight: 500;
   color: #222;
-}
-.banner {
-  background-color: #f8f5f2; /* or 改成上述其中一種 */
-  text-align: center;
-  padding: 32px 0;
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  color: #333; /* 如果背景太淺，也可以設 #444 */
 }
