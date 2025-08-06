@@ -145,3 +145,57 @@ body {
   font-size: 14px;
   margin: 0;
 }
+
+body {
+  font-family: 'Noto Sans TC', 'Helvetica Neue', sans-serif;
+  background-color: #fafafa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.product-detail {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.product-detail h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.product-detail .desc {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.product-detail .material {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.size-chart {
+  background: #f2f2f2;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.size-chart ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.product-detail .price {
+  font-size: 18px;
+  font-weight: 500;
+  color: #222;
+}
