@@ -7,13 +7,16 @@ body {
 }
 
 .banner {
-  background-color: #f8f5f2; 
+  background-color: #f8f5f2;
   text-align: center;
   padding: 32px 0;
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 1px;
   color: #333;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .hero {
@@ -161,4 +164,5 @@ body {
   font-weight: 500;
   color: #222;
 }
+
 
