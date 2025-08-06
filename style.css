@@ -199,3 +199,12 @@ body {
   font-weight: 500;
   color: #222;
 }
+.banner {
+  background-color: #f8f5f2; /* or 改成上述其中一種 */
+  text-align: center;
+  padding: 32px 0;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #333; /* 如果背景太淺，也可以設 #444 */
+}
