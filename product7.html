@@ -1,1 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>商品詳情 - LUFT PANTS</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .product-detail {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+      font-family: "微軟正黑體", sans-serif;
+    }
 
+    .main-image {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .thumbnail-list {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .thumbnail-list img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      transition: border 0.2s ease;
+    }
+
+    .thumbnail-list img.active {
+      border: 2px solid #555;
+    }
+
+    .product-detail h1 {
+      font-size: 24px;
+      margin: 10px 0;
+    }
+
+    .product-detail p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .product-detail .price {
+      font-weight: bold;
+      font-size: 18px;
+      color: #333;
+      margin-top: 10px;
+    }
+
+    a.back {
+      display: inline-block;
+      margin-top: 30px;
+      text-decoration: none;
+      color: #888;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+  ✿｡.ﾟ淳選品購Go｡.ﾟ✿<br>
+  <span style="font-size: 14px;">選品皆空運來台</span>
+</div>
+
+  <div class="product-detail">
+    <img id="mainImage" src="images/top2-1.jpeg" alt="主圖" class="main-image" />
+
+    <div class="thumbnail-list">
+      <img src="images/pants2-1.jpeg" alt="圖1" class="active" onclick="changeImage(this)">
+      <img src="images/pants2-2.jpeg" alt="圖2" onclick="changeImage(this)">
+      <img src="images/pants2-3.jpeg" alt="圖3" onclick="changeImage(this)">
+     <img src="images/pants2-4.jpeg" alt="圖4" onclick="changeImage(this)">
+       <img src="images/pants2-5.jpeg" alt="圖5" onclick="changeImage(this)">
+      <img src="images/pants2-6.jpeg" alt="圖6" onclick="changeImage(this)">
+      <img src="images/pants2-7.jpeg" alt="圖7" onclick="changeImage(this)">
+       <img src="images/pants2-8.jpeg" alt="圖8" onclick="changeImage(this)">
+
+    </div>
+
+<div class="product-detail">
+  <h1>LUFT PANTS</h1>
+  <p class="desc">詳情待補。</p>
+
+  <div class="material">
+        <p><strong>品牌：</strong> 𝗕𝘂𝗻𝗻𝘆𝗵𝗶𝗹𝗹𝖼𝗈𝗇𝖼𝖾𝗉𝗍®</p>
+    <p><strong>材質：</strong> 天絲／人造絲</p>
+    <p><strong>尺寸：</strong> 1 / 2 / 3</p>
+  </div>
+
+  <div class="size-chart">
+    <ul>
+      <li>size 1（40kg ~ 47kg / 胸圍 &lt; 80cm）</li>
+      <li>size 2（47kg ~ 55kg / 胸圍 &lt; 82cm）</li>
+      <li>size 3（55kg ~ 63kg / 胸圍 &lt; 84cm）</li>
+    </ul>
+  </div>
+
+  <p class="price">$1510</p>
+</div>
+    <a href="index.html" class="back">← 回首頁</a>
+  </div>
+
+  <script>
+    function changeImage(el) {
+      document.getElementById("mainImage").src = el.src;
+      document.querySelectorAll('.thumbnail-list img').forEach(img => img.classList.remove('active'));
+      el.classList.add('active');
+    }
+  </script>
+</body>
+</html>
