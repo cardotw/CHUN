@@ -4,14 +4,103 @@
   <meta charset="UTF-8" />
   <title>商品詳情 - LULLABY HALTER TOP</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .product-detail {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+      font-family: "微軟正黑體", sans-serif;
+    }
+
+    .main-image {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .thumbnail-list {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .thumbnail-list img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      transition: border 0.2s ease;
+    }
+
+    .thumbnail-list img.active {
+      border: 2px solid #555;
+    }
+
+    .product-detail h1 {
+      font-size: 24px;
+      margin: 10px 0;
+    }
+
+    .product-detail p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .product-detail .price {
+      font-weight: bold;
+      font-size: 18px;
+      color: #333;
+      margin-top: 10px;
+    }
+
+    a.back {
+      display: inline-block;
+      margin-top: 30px;
+      text-decoration: none;
+      color: #888;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
   <div class="product-detail">
-    <img src="images/product1.jpg" alt="LULLABY HALTER TOP" />
+    <img id="mainImage" src="images/top1-1.jpeg" alt="主圖" class="main-image" />
+
+    <div class="thumbnail-list">
+      <img src="images/top1-1.jpeg" alt="圖1" class="active" onclick="changeImage(this)">
+      <img src="images/top1-2.jpeg" alt="圖2" onclick="changeImage(this)">
+      <img src="images/top1-3.jpeg" alt="圖3" onclick="changeImage(this)">
+     <img src="images/top1-4.jpeg" alt="圖4" onclick="changeImage(this)">
+       <img src="images/top1-5.jpeg" alt="圖5" onclick="changeImage(this)">
+      <img src="images/top1-6.jpeg" alt="圖6" onclick="changeImage(this)">
+      <img src="images/top1-7.jpeg" alt="圖7" onclick="changeImage(this)">
+       <img src="images/top1-8.jpeg" alt="圖8" onclick="changeImage(this)">
+
+    </div>
+
     <h1>LULLABY HALTER TOP</h1>
-    <p>設計說明：柔和的藍，搭配交叉綁帶，展現甜美與個性兼具的穿搭感。</p>
+    <p>設計說明：柔和的藍色，搭配特別的層次設計，走在路上絕不撞衫。</p>
+<p>材質：天絲/人造絲 </p>
+<p>尺寸表（公分）：</p>
+<p>尺寸 1 ( 適用於 40kg ~ 47kg / 胸圍 < 80cm )</p>
+<p>尺寸 2 ( 適用於 47kg ~ 55kg / 胸圍 < 82cm )</p>
+ <p> 尺寸3 ( 適用於 55kg ~ 63kg / 胸圍 < 84cm )</p>
+
     <p class="price">$940</p>
-    <a href="index.html">← 回首頁</a>
+
+    <a href="index.html" class="back">← 回首頁</a>
   </div>
+
+  <script>
+    function changeImage(el) {
+      document.getElementById("mainImage").src = el.src;
+      document.querySelectorAll('.thumbnail-list img').forEach(img => img.classList.remove('active'));
+      el.classList.add('active');
+    }
+  </script>
 </body>
 </html>
