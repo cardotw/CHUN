@@ -185,26 +185,12 @@
     <p class="price">$940</p>
 
 
+<!-- ✅ 加上圖片網址（建議用主圖） -->
 <button class="add-to-cart-btn" onclick="addToCart('LULLABY HALTER TOP', 940, 'images/top1-1.jpeg')">加入購物車</button>
 
   <!-- 購物車側欄 -->
   <div id="cartSidebar" class="cart-sidebar">
-    <div class="cart-header">
-      <h3>🛒 購物車</h3>
-      <button onclick="toggleCart()">✖</button>
-    </div>
-    <ul id="cart-items"></ul>
-    <p id="empty-cart-text">目前沒有商品。</p>
-  </div>
-
-  <!-- 遮罩 -->
-  <div id="overlay" class="overlay" onclick="toggleCart()"></div>
-
-  <!-- Scripts -->
-  <script>
-    function changeImage(el) {
-      document.getElementById("mainImage").src = el.src;
-      document.querySelectorAll('.thumbnail-list img').forEach(img => img.classList.remove('active'));
+    <div class="cart-header">';'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''g => img.classList.remove('active'));
       el.classList.add('active');
     }
 
