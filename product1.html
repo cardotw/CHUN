@@ -6,6 +6,66 @@
   <link rel="stylesheet" href="style.css" />
   <script defer src="cart.js"></script>
   <style>
+    .banner {
+      background-color: #d3d3d3;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+    }
+    .banner-text {
+      font-size: 20px;
+      line-height: 1.5;
+      font-weight: bold;
+      text-align: center;
+      flex-grow: 1;
+    }
+    .home-btn,
+    .cart-icon {
+      background-color: white;
+      padding: 8px 12px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 14px;
+      color: #333;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .cart-icon {
+      position: relative;
+    }
+    #cart-count {
+      background-color: crimson;
+      color: white;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 50%;
+      position: absolute;
+      top: -8px;
+      right: -10px;
+    }
+    .thumbnail-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .thumbnail-list img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      transition: border 0.2s ease;
+    }
+    .thumbnail-list img.active {
+      border: 2px solid #555;
+    }
     .cart-sidebar {
       position: fixed;
       top: 0;
@@ -97,6 +157,19 @@
       border-radius: 4px;
       cursor: pointer;
       margin-top: 5px;
+    }
+    .product-detail {
+      max-width: 800px;
+      margin: 140px auto 40px;
+      padding: 0 20px;
+      font-family: "微軟正黑體", sans-serif;
+    }
+    .main-image {
+      width: 100%;
+      max-height: 500px;
+      object-fit: contain;
+      border-radius: 8px;
+      margin-bottom: 20px;
     }
   </style>
 </head>
