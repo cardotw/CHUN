@@ -220,9 +220,16 @@
       </ul>
     </div>
     <p class="price">$890</p>
-    <button class="add-to-cart-btn" onclick="addToCart('BEAU TOP', 890, 'images/top3-1.jpeg')">
-      加入購物車
-    </button>
+    <!-- 新增尺寸選擇 -->
+<label for="size-select"><strong>選擇尺寸：</strong></label>
+<select id="size-select">
+  <option value="1">Size 1）</option>
+  <option value="2">Size 2</option>
+  <option value="3">Size 3</option>
+</select>
+<button class="add-to-cart-btn" onclick="handleAddToCart()">
+  加入購物車
+</button>
   </div>
 
   <script>
@@ -236,6 +243,14 @@
       document.getElementById("overlay").classList.toggle("show");
       renderCartItems();
     }
+  function handleAddToCart() {
+    const selectedSize = document.getElementById("size-select").value;
+    const name = "BEAU TOP - Size " + selectedSize;
+    const price = 940;
+    const image = "images/top3-1.jpeg";
+    addToCart(name, price, image);
+  }
+    
     window.addEventListener("DOMContentLoaded", () => {
       updateCartCount();
     });
