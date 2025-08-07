@@ -1,8 +1,9 @@
-// 加入購物車
-function addToCart(productName, price) {
+// 加入購物車（加入圖片網址欄位）
+function addToCart(productName, price, imageUrl) {
   const item = {
     name: productName,
     price: price,
+    image: imageUrl,
     quantity: 1
   };
 
@@ -17,26 +18,32 @@ function addToCart(productName, price) {
 
   localStorage.setItem("cart", JSON.stringify(cart));
   alert("已加入購物車！");
+  updateCartCount();
 }
 
-// 顯示購物車內容（在 cart.html 會觸發）
+// 顯示購物車內容（for cart.html）
 function displayCart() {
   const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
   const cartContainer = document.getElementById("cart-items");
   const cartTotal = document.getElementById("cart-total");
 
-  if (!cartContainer || !cartTotal) return; // 如果不是在購物車頁面，直接跳出
+  if (!cartContainer || !cartTotal) return;
 
   cartContainer.innerHTML = "";
   let total = 0;
 
   cartItems.forEach((item, index) => {
-    const div = document.createElement("div");
     const itemTotal = item.price * item.quantity;
 
+    const div = document.createElement("div");
+    div.classList.add("cart-item");
     div.innerHTML = `
-      <p>${item.name} - 單價 $${item.price} x ${item.quantity} = $${itemTotal}</p>
-      <button onclick="removeFromCart(${index})">移除</button>
+      <img src="${item.image}" alt="${item.name}" style="width: 80px; height: 80px; object-fit: cover; margin-right: 10px;">
+      <div>
+        <p><strong>${item.name}</strong></p>
+        <p>$${item.price} x ${item.quantity} = $${itemTotal}</p>
+        <button onclick="removeFromCart(${index})">移除</button>
+      </div>
     `;
     cartContainer.appendChild(div);
     total += itemTotal;
@@ -45,20 +52,33 @@ function displayCart() {
   cartTotal.textContent = `🧾 總金額：$${total}`;
 }
 
-// 從購物車移除商品
+// 移除購物車商品
 function removeFromCart(index) {
   const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
   cartItems.splice(index, 1);
   localStorage.setItem("cart", JSON.stringify(cartItems));
   displayCart();
+  updateCartCount();
 }
 
-// 結帳按鈕
+// 結帳
 function checkout() {
   alert("感謝您的購買！");
   localStorage.removeItem("cart");
   displayCart();
+  updateCartCount();
 }
 
-// 如果在購物車頁面，自動載入購物車內容
-window.addEventListener("DOMContentLoaded", displayCart);
+// 更新右上角數字
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const cartCount = document.getElementById("cart-count");
+  if (cartCount) cartCount.textContent = count;
+}
+
+// 初始載入更新購物車數量與內容
+window.addEventListener("DOMContentLoaded", () => {
+  updateCartCount();
+  displayCart();
+});
