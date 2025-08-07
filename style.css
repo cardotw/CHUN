@@ -182,6 +182,13 @@ body {
   background-color: #444;
 }
 
+.cart-icon {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1002;
+}
+
 
 
 
