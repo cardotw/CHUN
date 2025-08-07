@@ -138,74 +138,190 @@
   </style>
 </head>
 
+
 <body>
-
-<div class="banner">
-  <div class="banner-text">
-    ✿｡.ﾟ淳選品購Go｡.ﾟ✿<br>
-    <span style="font-size: 14px;">選品皆空運來台</span>
+  <!-- 上方橫幅 -->
+  <div class="banner">
+    <a href="index.html" class="home-btn">🏠 回首頁</a>
+    <div class="banner-text">
+      ✿｡.ﾟ淳選品購Go｡.ﾟ✿<br>
+      <span style="font-size: 14px;">選品皆空運來台</span>
+    </div>
+    <button class="cart-icon" onclick="toggleCart()">
+      🛒 <span id="cart-count">0</span>
+    </button>
   </div>
-  <a href="cart.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
-</div>
 
-
+  <!-- 商品詳情內容 -->
   <div class="product-detail">
     <img id="mainImage" src="images/top1-1.jpeg" alt="主圖" class="main-image" />
 
     <div class="thumbnail-list">
-      <img src="images/top1-1.jpeg" alt="圖1" class="active" onclick="changeImage(this)">
-      <img src="images/top1-2.jpeg" alt="圖2" onclick="changeImage(this)">
-      <img src="images/top1-3.jpeg" alt="圖3" onclick="changeImage(this)">
-     <img src="images/top1-4.jpeg" alt="圖4" onclick="changeImage(this)">
-       <img src="images/top1-5.jpeg" alt="圖5" onclick="changeImage(this)">
-      <img src="images/top1-6.jpeg" alt="圖6" onclick="changeImage(this)">
-      <img src="images/top1-7.jpeg" alt="圖7" onclick="changeImage(this)">
-       <img src="images/top1-8.jpeg" alt="圖8" onclick="changeImage(this)">
-
+      <img src="images/top1-1.jpeg" class="active" onclick="changeImage(this)">
+      <img src="images/top1-2.jpeg" onclick="changeImage(this)">
+      <img src="images/top1-3.jpeg" onclick="changeImage(this)">
+      <img src="images/top1-4.jpeg" onclick="changeImage(this)">
+      <img src="images/top1-5.jpeg" onclick="changeImage(this)">
+      <img src="images/top1-6.jpeg" onclick="changeImage(this)">
+      <img src="images/top1-7.jpeg" onclick="changeImage(this)">
+      <img src="images/top1-8.jpeg" onclick="changeImage(this)">
     </div>
 
-<div class="product-detail">
-  <h1>LULLABY HALTER TOP</h1>
-  <p class="desc">柔和的藍色，搭配特別的層次設計，走在路上絕不撞衫。</p>
+    <h1>LULLABY HALTER TOP</h1>
+    <p class="desc">柔和的藍色，搭配特別的層次設計，走在路上絕不撞衫。</p>
 
-  <div class="material">
-        <p><strong>品牌：</strong> 𝗕𝘂𝗻𝗻𝘆𝗵𝗶𝗹𝗹𝖼𝗈𝗇𝖼𝖾𝗉𝗍®</p>
-    <p><strong>材質：</strong> 天絲／人造絲</p>
-    <p><strong>尺寸：</strong> 1 / 2 / 3</p>
-  </div>
+    <div class="material">
+      <p><strong>品牌：</strong> 𝗕𝘂𝗻𝗻𝘆𝗵𝗶𝗹𝗹𝖼𝗈𝗇𝖼𝖾𝗉𝗍®</p>
+      <p><strong>材質：</strong> 天絲／人造絲</p>
+      <p><strong>尺寸：</strong> 1 / 2 / 3</p>
+    </div>
 
-  <div class="size-chart">
-    <ul>
-      <li>size 1（40kg ~ 47kg / 胸圍 &lt; 80cm）</li>
-      <li>size 2（47kg ~ 55kg / 胸圍 &lt; 82cm）</li>
-      <li>size 3（55kg ~ 63kg / 胸圍 &lt; 84cm）</li>
+    <ul class="size-chart">
+      <li>size 1（40kg ~ 47kg / 胸圍 < 80cm）</li>
+      <li>size 2（47kg ~ 55kg / 胸圍 < 82cm）</li>
+      <li>size 3（55kg ~ 63kg / 胸圍 < 84cm）</li>
     </ul>
+
+    <p class="price">$940</p>
+
+    <button class="add-to-cart-btn" onclick="addToCart('LULLABY HALTER TOP', 940)">加入購物車</button>
   </div>
 
-  <p class="price">$940</p>
-</div>
-    <button class="add-to-cart-btn" onclick="addToCart('LULLABY HALTER TOP', 940)">
-  加入購物車
-</button>
+  <!-- 購物車側欄 -->
+  <div id="cartSidebar" class="cart-sidebar">
+    <div class="cart-header">
+      <h3>🛒 購物車</h3>
+      <button onclick="toggleCart()">✖</button>
     </div>
-
-    <a href="index.html" class="back">← 回首頁</a>
+    <ul id="cart-items"></ul>
+    <p id="empty-cart-text">目前沒有商品。</p>
   </div>
 
+  <!-- 遮罩 -->
+  <div id="overlay" class="overlay" onclick="toggleCart()"></div>
+
+  <!-- Scripts -->
   <script>
     function changeImage(el) {
       document.getElementById("mainImage").src = el.src;
       document.querySelectorAll('.thumbnail-list img').forEach(img => img.classList.remove('active'));
       el.classList.add('active');
     }
+
+    function toggleCart() {
+      document.getElementById("cartSidebar").classList.toggle("open");
+      document.getElementById("overlay").classList.toggle("show");
+      renderCartItems();
+    }
+
+    function addToCart(productName, price) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const existing = cart.find(p => p.name === productName);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ name: productName, price: price, quantity: 1 });
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartCount();
+      alert("已加入購物車！");
+    }
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById("cart-count").textContent = count;
+    }
+
+    function renderCartItems() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const cartList = document.getElementById("cart-items");
+      const emptyText = document.getElementById("empty-cart-text");
+
+      cartList.innerHTML = '';
+      if (cart.length === 0) {
+        emptyText.style.display = "block";
+        return;
+      }
+
+      emptyText.style.display = "none";
+      cart.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = `${item.name} x${item.quantity} - $${item.price * item.quantity}`;
+        cartList.appendChild(li);
+      });
+    }
+
+    // 初始化購物車數量
+    updateCartCount();
   </script>
-  <script>
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-  document.getElementById("cart-count").textContent = count;
-</script>
 
-    <script src="cart.js"></script>
+  <style>
+    .home-btn {
+      text-decoration: none;
+      padding: 6px 12px;
+      background: white;
+      border-radius: 20px;
+      font-size: 14px;
+      color: #333;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
 
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -300px;
+      width: 300px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      transition: right 0.3s ease;
+      z-index: 1001;
+    }
+
+    .cart-sidebar.open {
+      right: 0;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-header button {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 1000;
+    }
+
+    .overlay.show {
+      display: block;
+    }
+
+    #cart-items {
+      margin-top: 20px;
+      list-style: none;
+      padding-left: 0;
+    }
+
+    #empty-cart-text {
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
 </body>
+
 </html>
