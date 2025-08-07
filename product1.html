@@ -5,18 +5,62 @@
   <title>商品詳情 - LULLABY HALTER TOP</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", "微軟正黑體", sans-serif;
+      background-color: #fafafa;
+    }
+
+    .banner {
+      background-color: #cad1d3;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .home-btn, .cart-icon {
+      text-decoration: none;
+      background: white;
+      border-radius: 20px;
+      padding: 8px 12px;
+      font-size: 14px;
+      color: #333;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+    }
+
+    #cart-count {
+      background: crimson;
+      color: white;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 50%;
+      position: absolute;
+      top: -8px;
+      right: -10px;
+    }
+
     .product-detail {
       max-width: 800px;
-      margin: 60px auto;
-      padding: 0 20px;
-      font-family: "微軟正黑體", sans-serif;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
     .main-image {
       width: 100%;
       max-height: 500px;
-  object-fit: contain;
+      object-fit: contain;
       border-radius: 8px;
       margin-bottom: 20px;
     }
@@ -25,245 +69,44 @@
       display: flex;
       gap: 10px;
       margin-bottom: 20px;
+      overflow-x: auto;
     }
 
     .thumbnail-list img {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
       object-fit: cover;
-      cursor: pointer;
       border: 2px solid transparent;
       border-radius: 4px;
-      transition: border 0.2s ease;
+      cursor: pointer;
     }
 
     .thumbnail-list img.active {
-      border: 2px solid #555;
+      border-color: #333;
     }
 
-    .product-detail h1 {
-      font-size: 24px;
-      margin: 10px 0;
-    }
-
-    .product-detail p {
+    .add-to-cart-btn {
+      padding: 10px 20px;
+      background: #333;
+      color: white;
+      border: none;
+      border-radius: 4px;
       font-size: 16px;
-      line-height: 1.6;
+      cursor: pointer;
     }
 
-    .product-detail .price {
-      font-weight: bold;
-      font-size: 18px;
-      color: #333;
-      margin-top: 10px;
-    }
-
-    a.back {
-      display: inline-block;
-      margin-top: 30px;
-      text-decoration: none;
-      color: #888;
-      font-size: 14px;
-    }
-    .top-bar {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  right: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 999;
-}
-
-.home-btn,
-.cart-icon {
-  background-color: white;
-  padding: 8px 12px;
-  border-radius: 20px;
-  text-decoration: none;
-  font-size: 14px;
-  color: #333;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.cart-icon {
-  position: relative;
-}
-
-#cart-count {
-  background-color: crimson;
-  color: white;
-  font-size: 12px;
-  padding: 2px 6px;
-  border-radius: 50%;
-  position: absolute;
-  top: -8px;
-  right: -10px;
-}
-    .banner {
-  background-color: #d3d3d3;
-  padding: 20px;
-  text-align: left;
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.banner-text {
-  font-size: 20px;
-  line-height: 1.5;
-  font-weight: bold;
-}
-
-.cart-icon {
-  position: relative;
-  text-decoration: none;
-  color: black;
-  font-size: 20px;
-  margin-right: 10px;
-}
-
-#cart-count {
-  background-color: crimson;
-  color: white;
-  font-size: 12px;
-  padding: 2px 6px;
-  border-radius: 50%;
-  position: absolute;
-  top: -8px;
-  right: -12px;
-}
-  </style>
-</head>
-
-
-<body>
-  <!-- 上方橫幅 -->
-  <div class="banner">
-    <a href="index.html" class="home-btn">🏠 回首頁</a>
-    <div class="banner-text">
-      ✿｡.ﾟ淳選品購Go｡.ﾟ✿<br>
-      <span style="font-size: 14px;">選品皆空運來台</span>
-    </div>
-    <button class="cart-icon" onclick="toggleCart()">
-      🛒 <span id="cart-count">0</span>
-    </button>
-  </div>
-
-  <!-- 商品詳情內容 -->
-  <div class="product-detail">
-    <img id="mainImage" src="images/top1-1.jpeg" alt="主圖" class="main-image" />
-
-    <div class="thumbnail-list">
-      <img src="images/top1-1.jpeg" class="active" onclick="changeImage(this)">
-      <img src="images/top1-2.jpeg" onclick="changeImage(this)">
-      <img src="images/top1-3.jpeg" onclick="changeImage(this)">
-      <img src="images/top1-4.jpeg" onclick="changeImage(this)">
-      <img src="images/top1-5.jpeg" onclick="changeImage(this)">
-      <img src="images/top1-6.jpeg" onclick="changeImage(this)">
-      <img src="images/top1-7.jpeg" onclick="changeImage(this)">
-      <img src="images/top1-8.jpeg" onclick="changeImage(this)">
-    </div>
-
-    <h1>LULLABY HALTER TOP</h1>
-    <p class="desc">柔和的藍色，搭配特別的層次設計，走在路上絕不撞衫。</p>
-
-    <div class="material">
-      <p><strong>品牌：</strong> 𝗕𝘂𝗻𝗻𝘆𝗵𝗶𝗹𝗹𝖼𝗈𝗇𝖼𝖾𝗉𝗍®</p>
-      <p><strong>材質：</strong> 天絲／人造絲</p>
-      <p><strong>尺寸：</strong> 1 / 2 / 3</p>
-    </div>
-
-    <ul class="size-chart">
-      <li>size 1（40kg ~ 47kg / 胸圍 < 80cm）</li>
-      <li>size 2（47kg ~ 55kg / 胸圍 < 82cm）</li>
-      <li>size 3（55kg ~ 63kg / 胸圍 < 84cm）</li>
-    </ul>
-
-    <p class="price">$940</p>
-
-
-<!-- ✅ 加上圖片網址（建議用主圖） -->
-<button class="add-to-cart-btn" onclick="addToCart('LULLABY HALTER TOP', 940, 'images/top1-1.jpeg')">加入購物車</button>
-
-  <!-- 購物車側欄 -->
-  <div id="cartSidebar" class="cart-sidebar">
-    <div class="cart-header">';'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''g => img.classList.remove('active'));
-      el.classList.add('active');
-    }
-
-    function toggleCart() {
-      document.getElementById("cartSidebar").classList.toggle("open");
-      document.getElementById("overlay").classList.toggle("show");
-      renderCartItems();
-    }
-
-    function addToCart(productName, price) {
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      const existing = cart.find(p => p.name === productName);
-      if (existing) {
-        existing.quantity += 1;
-      } else {
-        cart.push({ name: productName, price: price, quantity: 1 });
-      }
-      localStorage.setItem("cart", JSON.stringify(cart));
-      updateCartCount();
-      alert("已加入購物車！");
-    }
-
-    function updateCartCount() {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-      document.getElementById("cart-count").textContent = count;
-    }
-
-    function renderCartItems() {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
-      const cartList = document.getElementById("cart-items");
-      const emptyText = document.getElementById("empty-cart-text");
-
-      cartList.innerHTML = '';
-      if (cart.length === 0) {
-        emptyText.style.display = "block";
-        return;
-      }
-
-      emptyText.style.display = "none";
-      cart.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = `${item.name} x${item.quantity} - $${item.price * item.quantity}`;
-        cartList.appendChild(li);
-      });
-    }
-
-    // 初始化購物車數量
-    updateCartCount();
-  </script>
-
-  <style>
-    .home-btn {
-      text-decoration: none;
-      padding: 6px 12px;
-      background: white;
-      border-radius: 20px;
-      font-size: 14px;
-      color: #333;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-
+    /* Cart Sidebar */
     .cart-sidebar {
       position: fixed;
       top: 0;
-      right: -300px;
-      width: 300px;
+      right: -320px;
+      width: 320px;
       height: 100%;
-      background: #fff;
+      background: white;
       box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
       padding: 20px;
       transition: right 0.3s ease;
-      z-index: 1001;
+      z-index: 2000;
     }
 
     .cart-sidebar.open {
@@ -276,38 +119,148 @@
       align-items: center;
     }
 
-    .cart-header button {
-      background: none;
-      border: none;
-      font-size: 20px;
-      cursor: pointer;
-    }
-
     .overlay {
       display: none;
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.4);
-      z-index: 1000;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1500;
     }
 
     .overlay.show {
       display: block;
     }
 
-    #cart-items {
-      margin-top: 20px;
-      list-style: none;
-      padding-left: 0;
+    .cart-item {
+      display: flex;
+      gap: 10px;
+      margin: 15px 0;
+      align-items: center;
     }
 
-    #empty-cart-text {
-      font-size: 14px;
-      color: #777;
+    .cart-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+    }
+
+    .cart-item button {
+      background: crimson;
+      color: white;
+      border: none;
+      padding: 2px 6px;
+      cursor: pointer;
+      border-radius: 4px;
     }
   </style>
-</body>
+</head>
+<body>
+  <div class="banner">
+    <a href="index.html" class="home-btn">🏠 回首頁</a>
+    <div>✿｡.ﾟ淳選品購Go｡.ﾟ✿</div>
+    <div class="cart-icon" onclick="toggleCart()">
+      🛒 <span id="cart-count">0</span>
+    </div>
+  </div>
 
+  <div class="product-detail">
+    <img id="mainImage" src="images/top1-1.jpeg" alt="主圖" class="main-image" />
+    <div class="thumbnail-list">
+      <img src="images/top1-1.jpeg" class="active" onclick="changeImage(this)" />
+      <img src="images/top1-2.jpeg" onclick="changeImage(this)" />
+    </div>
+    <h1>LULLABY HALTER TOP</h1>
+    <p>柔和的藍色，搭配特別的層次設計，走在路上絕不撞衫。</p>
+    <p><strong>尺寸：</strong> 1 / 2 / 3</p>
+    <p class="price">$940</p>
+    <button class="add-to-cart-btn" onclick="addToCart('LULLABY HALTER TOP', 940, 'images/top1-1.jpeg')">加入購物車</button>
+  </div>
+
+  <!-- Cart Sidebar -->
+  <div id="cartSidebar" class="cart-sidebar">
+    <div class="cart-header">
+      <h3>購物車</h3>
+      <button onclick="toggleCart()">✖</button>
+    </div>
+    <div id="cart-items"></div>
+    <p id="cart-total">🧾 總金額：$0</p>
+    <button onclick="checkout()">結帳</button>
+  </div>
+  <div id="overlay" class="overlay" onclick="toggleCart()"></div>
+
+  <script>
+    function changeImage(el) {
+      document.getElementById("mainImage").src = el.src;
+      document.querySelectorAll('.thumbnail-list img').forEach(img => img.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    function toggleCart() {
+      document.getElementById("cartSidebar").classList.toggle("open");
+      document.getElementById("overlay").classList.toggle("show");
+      renderCartItems();
+    }
+
+    function addToCart(name, price, image) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const existing = cart.find(p => p.name === name);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ name, price, image, quantity: 1 });
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartCount();
+    }
+
+    function removeFromCart(index) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCartItems();
+      updateCartCount();
+    }
+
+    function renderCartItems() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const container = document.getElementById("cart-items");
+      const total = document.getElementById("cart-total");
+      let sum = 0;
+      container.innerHTML = "";
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        sum += itemTotal;
+        container.innerHTML += `
+          <div class="cart-item">
+            <img src="${item.image}" />
+            <div>
+              <p>${item.name}</p>
+              <p>$${item.price} x ${item.quantity} = $${itemTotal}</p>
+              <button onclick="removeFromCart(${index})">移除</button>
+            </div>
+          </div>
+        `;
+      });
+      total.textContent = `🧾 總金額：$${sum}`;
+    }
+
+    function checkout() {
+      alert("感謝您的購買！");
+      localStorage.removeItem("cart");
+      toggleCart();
+      updateCartCount();
+    }
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById("cart-count").textContent = count;
+    }
+
+    window.addEventListener("DOMContentLoaded", updateCartCount);
+  </script>
+</body>
 </html>
