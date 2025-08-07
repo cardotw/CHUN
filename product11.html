@@ -222,9 +222,15 @@
       </ul>
     </div>
     <p class="price">$970</p>
-    <button class="add-to-cart-btn" onclick="addToCart('CHERIE HALTER TOP', 840, 'images/top4-1.jpeg')">
-      加入購物車
-    </button>
+          <!-- 新增尺寸選擇 -->
+<label for="size-select"><strong>選擇尺寸：</strong></label>
+<select id="size-select">
+  <option value="1">Size 1）</option>
+  <option value="2">Size 2</option>
+</select>
+<button class="add-to-cart-btn" onclick="handleAddToCart()">
+  加入購物車
+</button>
   </div>
 
   <script>
@@ -238,6 +244,13 @@
       document.getElementById("overlay").classList.toggle("show");
       renderCartItems();
     }
+      function handleAddToCart() {
+    const selectedSize = document.getElementById("size-select").value;
+    const name = "FEM BABY TEE - Size " + selectedSize;
+    const price = 970;
+    const image = "images/top9-1.jpeg";
+    addToCart(name, price, image);
+  }
     window.addEventListener("DOMContentLoaded", () => {
       updateCartCount();
     });
