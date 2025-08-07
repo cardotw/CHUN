@@ -234,9 +234,17 @@
     </div>
 
     <p class="price">$940</p>
-    <button class="add-to-cart-btn" onclick="addToCart('CONRAD SLEEVELESS TOP', 890, 'images/top2-1.jpeg')">
-      加入購物車
-    </button>
+
+    <!-- 新增尺寸選擇 -->
+<label for="size-select"><strong>選擇尺寸：</strong></label>
+<select id="size-select">
+  <option value="1">Size 1（40kg ~ 47kg / 胸圍 < 80cm）</option>
+  <option value="2">Size 2（47kg ~ 55kg / 胸圍 < 82cm）</option>
+  <option value="3">Size 3（55kg ~ 63kg / 胸圍 < 84cm）</option>
+</select>
+<button class="add-to-cart-btn" onclick="handleAddToCart()">
+  加入購物車
+</button>
   </div>
 
   <script>
