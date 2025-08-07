@@ -233,27 +233,31 @@
     </button>
   </div>
 
-  <script>
-    function changeImage(el) {
-      document.getElementById("mainImage").src = el.src;
-      document.querySelectorAll('.thumbnail-list img').forEach(img => img.classList.remove('active'));
-      el.classList.add('active');
-    }
-    function toggleCart() {
-      document.getElementById("cartSidebar").classList.toggle("open");
-      document.getElementById("overlay").classList.toggle("show");
-      renderCartItems();
-    }
-      function handleAddToCart() {
+ <script>
+  function changeImage(el) {
+    document.getElementById("mainImage").src = el.src;
+    document.querySelectorAll('.thumbnail-list img').forEach(img => img.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  function toggleCart() {
+    document.getElementById("cartSidebar").classList.toggle("open");
+    document.getElementById("overlay").classList.toggle("show");
+    renderCartItems();
+  }
+
+  function handleAddToCart() {
     const selectedSize = document.getElementById("size-select").value;
     const name = "AYSEL LACE PANEL TOP - Size " + selectedSize;
     const price = 890;
     const image = "images/top5-1.jpeg";
     addToCart(name, price, image);
   }
-    window.addEventListener("DOMContentLoaded", () => {
-      updateCartCount();
-    });
-  </script>
+
+  window.addEventListener("DOMContentLoaded", () => {
+    updateCartCount();
+  });
+</script>
+
 </body>
 </html>
