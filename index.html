@@ -5,95 +5,143 @@
   <title>淳Chun</title>
   <link rel="stylesheet" href="style.css" />
   <script defer src="cart.js"></script>
+  <style>
+    .cart-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1002;
+      background-color: white;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    #cart-count {
+      background-color: crimson;
+      color: white;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 50%;
+      position: absolute;
+      top: -8px;
+      right: -10px;
+    }
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -350px;
+      width: 350px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      transition: right 0.3s ease;
+      z-index: 1001;
+      overflow-y: auto;
+    }
+    .cart-sidebar.open {
+      right: 0;
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 1000;
+    }
+    .overlay.show {
+      display: block;
+    }
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .cart-header button {
+      font-size: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .cart-item {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .cart-item img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    .cart-item .info {
+      flex-grow: 1;
+    }
+    .cart-item .info p {
+      margin: 4px 0;
+    }
+    .cart-item .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 5px;
+    }
+    .quantity-btn {
+      padding: 2px 6px;
+      background: #eee;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    #cart-total {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    #checkout-btn {
+      margin-top: 10px;
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+    .remove-btn {
+      background-color: crimson;
+      border: none;
+      color: white;
+      padding: 3px 8px;
+      font-size: 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+  </style>
 </head>
 <body>
-  <div class="banner">
-    <div class="hero">
-      <img src="images/hero.jpg" alt="淳選品購Go" />
-      <div class="hero-text">
-        <h1>✿｡.ﾟ淳選品購Go｡.ﾟ✿</h1>
-        <p>空運來台</p>
-      </div>
+  <div class="hero">
+    <img src="images/hero.jpg" alt="淳選品購Go" />
+    <div class="hero-text">
+      <h1>✿｡.ﾟ淳選品購Go｡.ﾟ✿</h1>
+      <p>空運來台</p>
     </div>
-    <button class="cart-icon" onclick="toggleCart()">
-      🛒 <span id="cart-count">0</span>
-    </button>
   </div>
-
   <div class="tabs">
     <button class="active">商品列表</button>
   </div>
 
-  <!-- 商品清單 -->
   <div class="product-list">
-    <a href="product1.html" class="product-card">
-      <img src="images/top1.jpg" alt="商品1">
-      <p class="name">LULLABY HALTER TOP</p>
-      <p class="price">$940</p>
-    </a>
-    <a href="product2.html" class="product-card">
-      <img src="images/top2.jpg" alt="商品2">
-      <p class="name">CONRAD SLEEVELESS TOP</p>
-      <p class="price">$890</p>
-    </a>
-    <a href="product3.html" class="product-card">
-      <img src="images/top3.jpg" alt="商品3">
-      <p class="name">BEAU TOP</p>
-      <p class="price">$890</p>
-    </a>
-    <a href="product4.html" class="product-card">
-      <img src="images/top4.jpg" alt="商品4">
-      <p class="name">CHERIE HALTER TOP</p>
-      <p class="price">$840</p>
-    </a>
-    <a href="product5.html" class="product-card">
-      <img src="images/top5.jpg" alt="商品5">
-      <p class="name">AYSEL LACE PANEL TOP</p>
-      <p class="price">$890</p>
-    </a>
-    <a href="product6.html" class="product-card">
-      <img src="images/pants1.jpg" alt="商品6">
-      <p class="name">PRISM PANTS</p>
-      <p class="price">$1480</p>
-    </a>
-    <a href="product7.html" class="product-card">
-      <img src="images/pants2.jpg" alt="商品7">
-      <p class="name">LUFT PANTS</p>
-      <p class="price">$1510</p>
-    </a>
-    <a href="product8.html" class="product-card">
-      <img src="images/top6.jpg" alt="商品8">
-      <p class="name">CLARISSE BUSTIER TOP</p>
-      <p class="price">$1780</p>
-    </a>
-    <a href="product9.html" class="product-card">
-      <img src="images/top7.jpg" alt="商品9">
-      <p class="name">ROSELLE TIERED TOP</p>
-      <p class="price">$1180</p>
-    </a>
-    <a href="product10.html" class="product-card">
-      <img src="images/top8.jpg" alt="商品10">
-      <p class="name">JADELYLI PEPLUM TOP</p>
-      <p class="price">$1220</p>
-    </a>
-    <a href="product11.html" class="product-card">
-      <img src="images/top9.jpg" alt="商品11">
-      <p class="name">FEM BABY TEE</p>
-      <p class="price">$920</p>
-    </a>
-    <a href="product12.html" class="product-card">
-      <img src="images/top10.jpg" alt="商品12">
-      <p class="name">LUNAR PLEATED WIDE PANTS</p>
-      <p class="price">$1480</p>
-    </a>
-    <a href="product13.html" class="product-card">
-      <img src="images/pants3.jpg" alt="商品13">
-      <p class="name">SHADOW CHARM TOP</p>
-      <p class="price">$1020</p>
-    </a>
+    <!-- product cards here... -->
   </div>
 
-  <!-- 購物車側邊欄 -->
+  <button class="cart-icon" onclick="toggleCart()">
+    🛒 <span id="cart-count">0</span>
+  </button>
+
   <div id="cartSidebar" class="cart-sidebar">
     <div class="cart-header">
       <h3>🛒 購物車</h3>
@@ -106,5 +154,17 @@
   </div>
 
   <div id="overlay" class="overlay" onclick="toggleCart()"></div>
+
+  <script>
+    function toggleCart() {
+      document.getElementById("cartSidebar").classList.toggle("open");
+      document.getElementById("overlay").classList.toggle("show");
+      renderCartItems();
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      updateCartCount();
+    });
+  </script>
 </body>
 </html>
