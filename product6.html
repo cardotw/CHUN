@@ -56,6 +56,120 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       z-index: 1003;
     }
+    .cart-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1002;
+      background-color: white;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    #cart-count {
+      background-color: crimson;
+      color: white;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 50%;
+      position: absolute;
+      top: -8px;
+      right: -10px;
+    }
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -350px;
+      width: 350px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      transition: right 0.3s ease;
+      z-index: 1001;
+      overflow-y: auto;
+    }
+    .cart-sidebar.open {
+      right: 0;
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 1000;
+    }
+    .overlay.show {
+      display: block;
+    }
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .cart-header button {
+      font-size: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .cart-item {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .cart-item img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+    .cart-item .info {
+      flex-grow: 1;
+    }
+    .cart-item .info p {
+      margin: 4px 0;
+    }
+    .cart-item .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 5px;
+    }
+    .quantity-btn {
+      padding: 2px 6px;
+      background: #eee;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    #cart-total {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    #checkout-btn {
+      margin-top: 10px;
+      padding: 6px 12px;
+      font-size: 14px;
+    }
+    .remove-btn {
+      background-color: crimson;
+      border: none;
+      color: white;
+      padding: 3px 8px;
+      font-size: 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
@@ -85,24 +199,21 @@
 
   <div class="product-detail">
     <img id="mainImage" src="images/pants1-1.jpeg" alt="主圖" class="main-image" />
-
     <div class="thumbnail-list">
       <img src="images/pants1-1.jpeg" alt="圖1" class="active" onclick="changeImage(this)">
       <img src="images/pants1-2.jpeg" alt="圖2" onclick="changeImage(this)">
       <img src="images/pants1-3.jpeg" alt="圖3" onclick="changeImage(this)">
       <img src="images/pants1-4.jpeg" alt="圖4" onclick="changeImage(this)">
-      <img src="images/pants1-5.jpeg" alt="圖5" onclick="changeImage(this)">
-    </div>
+            <img src="images/pants1-5.jpeg" alt="圖4" onclick="changeImage(this)">
 
+    </div>
     <h1>PRISM PANTS</h1>
     <p class="desc">詳情待補。</p>
-
     <div class="material">
       <p><strong>品牌：</strong> 𝗕𝘂𝗻𝗻𝘆𝗵𝗶𝗹𝗹𝖼𝗈𝗇𝖼𝖾𝗉𝗍®</p>
       <p><strong>材質：</strong> 天絲／人造絲</p>
       <p><strong>尺寸：</strong> 1 / 2 / 3</p>
     </div>
-
     <div class="size-chart">
       <ul>
         <li>size 1（40kg ~ 47kg / 胸圍 < 80cm）</li>
@@ -110,9 +221,8 @@
         <li>size 3（55kg ~ 63kg / 胸圍 < 84cm）</li>
       </ul>
     </div>
-
     <p class="price">$1480</p>
-    <button class="add-to-cart-btn" onclick="addToCart('PRISM PANTS', 1480, 'images/pants1-1.jpeg')">
+    <button class="add-to-cart-btn" onclick="addToCart('CHERIE HALTER TOP', 840, 'images/top4-1.jpeg')">
       加入購物車
     </button>
   </div>
