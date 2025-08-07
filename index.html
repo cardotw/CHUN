@@ -4,113 +4,107 @@
   <meta charset="UTF-8" />
   <title>淳Chun</title>
   <link rel="stylesheet" href="style.css" />
+  <script defer src="cart.js"></script>
 </head>
 <body>
-  <div class="hero">
-    <img src="images/hero.jpg" alt="淳選品購Go" />
-    <div class="hero-text">
-      <h1>✿｡.ﾟ淳選品購Go｡.ﾟ✿</h1>
-      <p>空運來台</p>
+  <div class="banner">
+    <div class="hero">
+      <img src="images/hero.jpg" alt="淳選品購Go" />
+      <div class="hero-text">
+        <h1>✿｡.ﾟ淳選品購Go｡.ﾟ✿</h1>
+        <p>空運來台</p>
+      </div>
     </div>
-</div>
-<div class="tabs">
-  <button class="active">商品列表</button>
-</div>
-
-<div class="product-list">
- <a href="product1.html" class="product-card">
-    <img src="images/top1.jpg" alt="商品1">
-    <p class="name">𝗕𝘂𝗻𝗻𝘆𝗵𝗶𝗹𝗹𝖼𝗈𝗇𝖼𝖾𝗉𝗍®｜LULLABY HALTER TOP</p>
-    <p class="price">$940</p>
-</a>
- <a href="product2.html" class="product-card">
-    <img src="images/top2.jpg" alt="商品2">
-    <p class="name">𝗕𝘂𝗻𝗻𝘆𝗵𝗶𝗹𝗹𝖼𝗈𝗇𝖼𝖾𝗉𝗍®｜CONRAD SLEEVELESS TOP</p>
-    <p class="price">$890</p>
-</a>
- <a href="product3.html" class="product-card">
-    <img src="images/top3.jpg" alt="商品3">
-    <p class="name">𝗕𝘂𝗻𝗻𝘆𝗵𝗶𝗹𝗹𝖼𝗈𝗇𝖼𝖾𝗉𝗍®｜BEAU TOP</p>
-    <p class="price">$890</p>
-</a>
-</div>
-
-  </div>
-<div class="product-list">
- <a href="product4.html" class="product-card">
-    <img src="images/top4.jpg" alt="商品4">
-    <p class="name">𝗕𝘂𝗻𝗻𝘆𝗵𝗶𝗹𝗹𝖼𝗈𝗇𝖼𝖾𝗉𝗍®｜CHERIE HALTER TOP</p>
-    <p class="price">$840</p>
-</a>
- <a href="product5.html" class="product-card">
-    <img src="images/top5.jpg" alt="商品5">
-    <p class="name">𝗕𝘂𝗻𝗻𝘆𝗵𝗶𝗹𝗹𝖼𝗈𝗇𝖼𝖾𝗉𝗍®｜AYSEL LACE PANEL TOP</p>
-    <p class="price">$890</p>
-</a>
- <a href="product6.html" class="product-card">
-    <img src="images/pants1.jpg" alt="商品6">
-    <p class="name">𝗕𝘂𝗻𝗻𝘆𝗵𝗶𝗹𝗹𝖼𝗈𝗇𝖼𝖾𝗉𝗍®｜PRISM PANTS</p>
-    <p class="price">$1480</p>
-</a>
-</div>
+    <button class="cart-icon" onclick="toggleCart()">
+      🛒 <span id="cart-count">0</span>
+    </button>
   </div>
 
-  </div>
-<div class="product-list">
- <a href="product7.html" class="product-card">
-    <img src="images/pants2.jpg" alt="商品7">
-    <p class="name">𝗕𝘂𝗻𝗻𝘆𝗵𝗶𝗹𝗹𝖼𝗈𝗇𝖼𝖾𝗉𝗍®｜LUFT PANTS</p>
-    <p class="price">$1510</p>
-</a>
- <a href="product8.html" class="product-card">
-    <img src="images/top6.jpg" alt="商品8">
-    <p class="name">MELANCHOLY｜CLARISSE BUSTIER TOP</p>
-    <p class="price">$1780</p>
-</a>
- <a href="product9.html" class="product-card">
-    <img src="images/top7.jpg" alt="商品9">
-    <p class="name">MELANCHOLY｜ROSELLE TIERED TOP</p>
-    <p class="price">$1180</p>
-</a>
-</div>
+  <div class="tabs">
+    <button class="active">商品列表</button>
   </div>
 
-  </div>
-<div class="product-list">
- <a href="product10.html" class="product-card">
-    <img src="images/top8.jpg" alt="商品10">
-    <p class="name">MELANCHOLY｜JADELYLI PEPLUM TOP</p>
-    <p class="price">$1220</p>
-</a>
- <a href="product11.html" class="product-card">
-    <img src="images/top9.jpg" alt="商品11">
-    <p class="name">MELANCHOLY｜FEM BABY TEE</p>
-    <p class="price">$920</p>
-</a>
- <a href="product12.html" class="product-card">
-    <img src="images/top10.jpg" alt="商品12">
-    <p class="name">MELANCHOLY｜LUNAR PLEATED WIDE PANTS</p>
-    <p class="price">$1480</p>
-</a>
-</div>
+  <!-- 商品清單 -->
+  <div class="product-list">
+    <a href="product1.html" class="product-card">
+      <img src="images/top1.jpg" alt="商品1">
+      <p class="name">LULLABY HALTER TOP</p>
+      <p class="price">$940</p>
+    </a>
+    <a href="product2.html" class="product-card">
+      <img src="images/top2.jpg" alt="商品2">
+      <p class="name">CONRAD SLEEVELESS TOP</p>
+      <p class="price">$890</p>
+    </a>
+    <a href="product3.html" class="product-card">
+      <img src="images/top3.jpg" alt="商品3">
+      <p class="name">BEAU TOP</p>
+      <p class="price">$890</p>
+    </a>
+    <a href="product4.html" class="product-card">
+      <img src="images/top4.jpg" alt="商品4">
+      <p class="name">CHERIE HALTER TOP</p>
+      <p class="price">$840</p>
+    </a>
+    <a href="product5.html" class="product-card">
+      <img src="images/top5.jpg" alt="商品5">
+      <p class="name">AYSEL LACE PANEL TOP</p>
+      <p class="price">$890</p>
+    </a>
+    <a href="product6.html" class="product-card">
+      <img src="images/pants1.jpg" alt="商品6">
+      <p class="name">PRISM PANTS</p>
+      <p class="price">$1480</p>
+    </a>
+    <a href="product7.html" class="product-card">
+      <img src="images/pants2.jpg" alt="商品7">
+      <p class="name">LUFT PANTS</p>
+      <p class="price">$1510</p>
+    </a>
+    <a href="product8.html" class="product-card">
+      <img src="images/top6.jpg" alt="商品8">
+      <p class="name">CLARISSE BUSTIER TOP</p>
+      <p class="price">$1780</p>
+    </a>
+    <a href="product9.html" class="product-card">
+      <img src="images/top7.jpg" alt="商品9">
+      <p class="name">ROSELLE TIERED TOP</p>
+      <p class="price">$1180</p>
+    </a>
+    <a href="product10.html" class="product-card">
+      <img src="images/top8.jpg" alt="商品10">
+      <p class="name">JADELYLI PEPLUM TOP</p>
+      <p class="price">$1220</p>
+    </a>
+    <a href="product11.html" class="product-card">
+      <img src="images/top9.jpg" alt="商品11">
+      <p class="name">FEM BABY TEE</p>
+      <p class="price">$920</p>
+    </a>
+    <a href="product12.html" class="product-card">
+      <img src="images/top10.jpg" alt="商品12">
+      <p class="name">LUNAR PLEATED WIDE PANTS</p>
+      <p class="price">$1480</p>
+    </a>
+    <a href="product13.html" class="product-card">
+      <img src="images/pants3.jpg" alt="商品13">
+      <p class="name">SHADOW CHARM TOP</p>
+      <p class="price">$1020</p>
+    </a>
   </div>
 
+  <!-- 購物車側邊欄 -->
+  <div id="cartSidebar" class="cart-sidebar">
+    <div class="cart-header">
+      <h3>🛒 購物車</h3>
+      <button onclick="toggleCart()">✖</button>
+    </div>
+    <ul id="cart-items"></ul>
+    <p id="empty-cart-text">目前沒有商品。</p>
+    <p id="cart-total">🧾 總金額：$0</p>
+    <button id="checkout-btn" onclick="checkout()">結帳</button>
   </div>
-<div class="product-list">
- <a href="product13.html" class="product-card">
-    <img src="images/pants3.jpg" alt="商品13">
-    <p class="name">MELANCHOLY｜SHADOW CHARM TOP</p>
-    <p class="price">$1020</p>
-</a>
 
-</div>
-  </div>
-
-  <script src="main.js"></script>
+  <div id="overlay" class="overlay" onclick="toggleCart()"></div>
 </body>
 </html>
-
-
-
-
-
