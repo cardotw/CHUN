@@ -4,74 +4,31 @@
   <meta charset="UTF-8" />
   <title>商品詳情 - CONRAD SLEEVELESS TOP</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    .product-detail {
-      max-width: 800px;
-      margin: 60px auto;
-      padding: 0 20px;
-      font-family: "微軟正黑體", sans-serif;
-    }
-
-    .main-image {
-      width: 100%;
-      max-height: 500px;
-  object-fit: contain;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
-
-    .thumbnail-list {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .thumbnail-list img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      cursor: pointer;
-      border: 2px solid transparent;
-      border-radius: 4px;
-      transition: border 0.2s ease;
-    }
-
-    .thumbnail-list img.active {
-      border: 2px solid #555;
-    }
-
-    .product-detail h1 {
-      font-size: 24px;
-      margin: 10px 0;
-    }
-
-    .product-detail p {
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    .product-detail .price {
-      font-weight: bold;
-      font-size: 18px;
-      color: #333;
-      margin-top: 10px;
-    }
-
-    a.back {
-      display: inline-block;
-      margin-top: 30px;
-      text-decoration: none;
-      color: #888;
-      font-size: 14px;
-    }
-  </style>
+  <script defer src="cart.js"></script>
 </head>
-
 <body>
   <div class="banner">
-  ✿｡.ﾟ淳選品購Go｡.ﾟ✿<br>
-  <span style="font-size: 14px;">選品皆空運來台</span>
-</div>
+    ✿。.฿淳選品購Go฿.。✿<br>
+    <span style="font-size: 14px;">選品皆空運來台</span>
+  </div>
+
+  <!-- 購物車圖示 -->
+  <button class="cart-icon" onclick="toggleCart()">
+    🛒 <span id="cart-count">0</span>
+  </button>
+
+  <!-- 購物車側邊欄 -->
+  <div id="cartSidebar" class="cart-sidebar">
+    <div class="cart-header">
+      <h3>🛒 購物車</h3>
+      <button onclick="toggleCart()">✖</button>
+    </div>
+    <ul id="cart-items"></ul>
+    <p id="empty-cart-text">目前沒有商品。</p>
+    <p id="cart-total">📟 總金額：$0</p>
+    <button id="checkout-btn" onclick="checkout()">結帳</button>
+  </div>
+  <div id="overlay" class="overlay" onclick="toggleCart()"></div>
 
   <div class="product-detail">
     <img id="mainImage" src="images/top2-1.jpeg" alt="主圖" class="main-image" />
@@ -80,34 +37,31 @@
       <img src="images/top2-1.jpeg" alt="圖1" class="active" onclick="changeImage(this)">
       <img src="images/top2-2.jpeg" alt="圖2" onclick="changeImage(this)">
       <img src="images/top2-3.jpeg" alt="圖3" onclick="changeImage(this)">
-     <img src="images/top2-4.jpeg" alt="圖4" onclick="changeImage(this)">
-
+      <img src="images/top2-4.jpeg" alt="圖4" onclick="changeImage(this)">
     </div>
 
-<div class="product-detail">
-  <h1>CONRAD SLEEVELESS TOP</h1>
-  <p class="desc">待補介紹。</p>
+    <h1>CONRAD SLEEVELESS TOP</h1>
+    <p class="desc">待補介紹。</p>
 
-  <div class="material">
-    <p><strong>品牌：</strong> 𝗕𝘂𝗻𝗻𝘆𝗵𝗶𝗹𝗹𝖼𝗈𝗇𝖼𝖾𝗉𝗍®</p>
-    <p><strong>材質：</strong> 天絲／人造絲</p>
-    <p><strong>尺寸：</strong> 1 / 2 / 3</p>
-  </div>
-
-  <div class="size-chart">
-    <ul>
-      <li>size 1（40kg ~ 47kg / 胸圍 &lt; 80cm）</li>
-      <li>size 2（47kg ~ 55kg / 胸圍 &lt; 82cm）</li>
-      <li>size 3（55kg ~ 63kg / 胸圍 &lt; 84cm）</li>
-    </ul>
-  </div>
-
-  <p class="price">$890</p>
-</div>
-        <button class="add-to-cart-btn" onclick="addToCart('LULLABY HALTER TOP', 940)">
-  加入購物車
-</button>
+    <div class="material">
+      <p><strong>品牌：</strong> 𝔃𝔪𝔭𝔭𝔦𝔫𝔭𝔭𝔰𝔦𝔯𝔭®</p>
+      <p><strong>材質：</strong> 天絲／人造絲</p>
+      <p><strong>尺寸：</strong> 1 / 2 / 3</p>
     </div>
+
+    <div class="size-chart">
+      <ul>
+        <li>size 1（ 40kg ~ 47kg / 胸圍 < 80cm）</li>
+        <li>size 2（ 47kg ~ 55kg / 胸圍 < 82cm）</li>
+        <li>size 3（ 55kg ~ 63kg / 胸圍 < 84cm）</li>
+      </ul>
+    </div>
+
+    <p class="price">$890</p>
+    <button class="add-to-cart-btn" onclick="addToCart('CONRAD SLEEVELESS TOP', 890, 'images/top2-1.jpeg')">
+      加入購物車
+    </button>
+
     <a href="index.html" class="back">← 回首頁</a>
   </div>
 
@@ -117,8 +71,16 @@
       document.querySelectorAll('.thumbnail-list img').forEach(img => img.classList.remove('active'));
       el.classList.add('active');
     }
-  </script>
-    <script src="cart.js"></script>
 
+    function toggleCart() {
+      document.getElementById("cartSidebar").classList.toggle("open");
+      document.getElementById("overlay").classList.toggle("show");
+      renderCartItems();
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      updateCartCount();
+    });
+  </script>
 </body>
 </html>
