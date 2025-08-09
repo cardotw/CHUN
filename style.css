@@ -222,6 +222,10 @@ body {
 
 
 
+.product-list a {
+  text-decoration: none;
+  color: inherit; /* 保持原本文字顏色 */
+}
 
 
 
