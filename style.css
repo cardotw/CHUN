@@ -202,8 +202,8 @@ body {
 }
 
 .round-btn {
-  background-color: #8E8E8E	; /* 按鈕顏色 */
-  color: white;
+  background-color: #FFFFFF	; /* 按鈕顏色 */
+  color: #000000;
   padding: 8px 14px;
   border-radius: 25px; /* 圓角膠囊效果 */
   text-decoration: none;
@@ -219,6 +219,7 @@ body {
 .round-btn:hover {
   background-color: #ff4757;
 }
+
 
 
 
