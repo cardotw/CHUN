@@ -181,14 +181,8 @@
 </head>
 <body>
   
-<div style="display: flex; gap: 10px; padding: 10px;">
-  <button onclick="location.href='index.html'">回首頁</button>
+  <a href="index.html" class="home-btn">🏠 回首頁</a>
 
-  <button onclick="location.href='howtobuy.html'">購買方式說明</button>
-
-  <button onclick="window.open('https://www.instagram.com/chun0710yo/', '_blank')">IG @chun0710yo</button>
-  
-</div>
   <div class="banner">
     ✿｡.ﾟ淳選品購Go｡.ﾟ✿<br>
     <span style="font-size: 14px;">空運來台</span>
@@ -248,6 +242,13 @@
   <option value="2">Size 2</option>
   <option value="3">Size 3</option>
 </select>
+
+    <!-- 固定功能按鈕 -->
+<div class="fixed-buttons">
+  <a href="howtobuy.html" class="round-btn">📖 購買方式</a>
+  <a href="https://www.instagram.com/chun0710yo/" target="_blank" class="round-btn">📸 IG @chun0710yo</a>
+</div>
+
 <button class="add-to-cart-btn" onclick="handleAddToCart()">
   加入購物車
 </button>
