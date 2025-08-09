@@ -193,7 +193,6 @@ body {
 .fixed-buttons {
   position: fixed;
   top: 150px; /* 距離螢幕頂端 */
-  right: 20px; /* 距離螢幕右邊 */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -201,7 +200,7 @@ body {
 }
 
 .round-btn {
-  background-color: #ff6b81; /* 按鈕顏色 */
+  background-color: #8E8E8E	; /* 按鈕顏色 */
   color: white;
   padding: 8px 14px;
   border-radius: 25px; /* 圓角膠囊效果 */
@@ -218,6 +217,7 @@ body {
 .round-btn:hover {
   background-color: #ff4757;
 }
+
 
 
 
